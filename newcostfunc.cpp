@@ -11,7 +11,30 @@ using Eigen::MatrixXd;
 using Eigen::VectorXcd;
 using namespace std;
 float eigen2(int A[][100],int N){
-    //write this code
+    int i,j,k;
+    vector<float>V;
+    MatrixXd L(N,N);
+    VectorXcd EV;
+    for (i=0;i<=N-1;i=i+1){
+        for (j=0;j<=N-1;j=j+1){
+        if (i!=j){
+            L(i,j)=-A[i][j];
+        }
+        if (i==j){
+            L(i,j)=0;
+            for (k=0;k<=N-1;k=k+1){
+            L(i,j)+=A[i][k];
+            }
+        }
+        }
+    }
+    EV=L.eigenvalues();
+    V.clear();
+    for (i=0;i<=N-1;i=i+1){
+        V.push_back(EV(i).real());
+    }
+    sort(V.begin(),V.end());
+    cout<<"λ₂(G) = "<<V[1]<<endl;
 }
 float numedge(int A[][100],int N){
     int i,j;
