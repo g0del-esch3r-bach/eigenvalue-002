@@ -4,40 +4,14 @@
 #include<cstdio>
 #include<cmath>
 #include<string>
+#include<algorithm>
+#include "../eigen-3.4.0/Eigen/Dense"
+#include "../eigen-3.4.0/Eigen/Eigenvalues" //fix this issue
+using Eigen::MatrixXd;
+using Eigen::VectorXcd;
 using namespace std;
-float avgdist(int A[][100],int N){
-    int D[N][N],i,j,k;
-    float ans;
-    for (i=0;i<=N-1;i=i+1){
-        for (j=0;j<=N-1;j=j+1){
-            if (i==j){
-                D[i][j]=0;
-            }
-            else if (A[i][j]==1){
-                D[i][j]=1;
-            }
-            else {
-                D[i][j]=100000;
-            }
-        }
-    }
-    for (k=0;k<=N-1;k=k+1){
-        for (i=0;i<=N-1;i=i+1){
-            for (j=0;j<=N-1;j=j+1){
-                if (D[i][j]>D[i][k]+D[k][j]){
-                    D[i][j]=D[i][k]+D[k][j];
-                }
-            }
-        }
-    }
-    ans=0;
-    for (i=0;i<=N-1;i=i+1){
-        for (j=0;j<=i-1;j=j+1){
-            ans+=D[i][j];
-        }
-    }
-    ans=2*(float)ans/((float)(N*(N-1)));
-    return ans;
+float eigen2(int A[][100],int N){
+    //write this code
 }
 float numedge(int A[][100],int N){
     int i,j;
@@ -85,7 +59,7 @@ int main(){
                 B[i][j]=A[k][i][j];
             }
         }
-        cost=3*alpha*avgdist(B,N)/((float)(N+1))+2*(1-alpha)*numedge(B,N)/((float)(N*(N-1)));
+        cost=3*alpha*eigen2(B,N)/((float)(N+1))+2*(1-alpha)*numedge(B,N)/((float)(N*(N-1)));
         if (cost<mincost){
             mincost=cost;
             V.clear();
