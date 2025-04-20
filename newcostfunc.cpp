@@ -34,7 +34,7 @@ float eigen2(int A[][100],int N){
         V.push_back(EV(i).real());
     }
     sort(V.begin(),V.end());
-    cout<<"λ₂(G) = "<<V[1]<<endl;
+    return V[1];
 }
 float numedge(int A[][100],int N){
     int i,j;
