@@ -5,8 +5,8 @@
 #include<cmath>
 #include<string>
 #include<algorithm>
-#include "../eigen-3.4.0/Eigen/Dense"
-#include "../eigen-3.4.0/Eigen/Eigenvalues" //fix this issue
+#include "eigen-3.4.0/Eigen/Dense"
+#include "eigen-3.4.0/Eigen/Eigenvalues"
 using Eigen::MatrixXd;
 using Eigen::VectorXcd;
 using namespace std;
@@ -17,15 +17,15 @@ float eigen2(int A[][100],int N){
     VectorXcd EV;
     for (i=0;i<=N-1;i=i+1){
         for (j=0;j<=N-1;j=j+1){
-        if (i!=j){
-            L(i,j)=-A[i][j];
-        }
-        if (i==j){
-            L(i,j)=0;
-            for (k=0;k<=N-1;k=k+1){
-            L(i,j)+=A[i][k];
+            if (i!=j){
+                L(i,j)=-A[i][j];
             }
-        }
+            if (i==j){
+                L(i,j)=0;
+                for (k=0;k<=N-1;k=k+1){
+                L(i,j)+=A[i][k];
+                }
+            }
         }
     }
     EV=L.eigenvalues();
@@ -38,14 +38,14 @@ float eigen2(int A[][100],int N){
 }
 float numedge(int A[][100],int N){
     int i,j;
-    float ans;
-    ans=0;
+    float edges;
+    edges=0;
     for (i=0;i<=N-1;i=i+1){
         for (j=0;j<=i-1;j=j+1){
-            ans+=(float)A[i][j];
+            edges+=(float)A[i][j];
         }
     }
-    return ans;
+    return edges;
 }
 string inputstr(int N){
     return "gooddata/o"+to_string(N)+".txt";
@@ -53,14 +53,17 @@ string inputstr(int N){
 string outputstr(int N,float a){
     int M;
     M=1000*a;
-    if (a==0){
-        return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"a0.000.txt";
+    if (M<10){
+        return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"a0.00"+to_string(M)+".txt";
     }
-    else if (a==1){
-        return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"a1.000.txt";
+    else if (M<100){
+        return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"a0.0"+to_string(M)+".txt";
     }
-    else {
+    else if (M<1000){
         return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"a0."+to_string(M)+".txt";
+    }
+    else{
+        return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"a1.000.txt";
     }
 }
 int main(){
