@@ -69,7 +69,7 @@ string outputstr(int N,float a){
 int main(){
     int N,M,k,i,j;
     float cost,alpha,mincost;
-    N=6; //<----------------------- FREE VARIABLES;
+    N=3; //<----------------------- FREE VARIABLES;
     alpha=0.701; //<---------------- SUBJECT TO CHANGE
     mincost=100000;
     freopen(inputstr(N).c_str(),"r",stdin);
@@ -86,6 +86,7 @@ int main(){
             }
         }
         cost=3*alpha*eigen2(B,N)/((float)(N+1))+2*(1-alpha)*numedge(B,N)/((float)(N*(N-1)));
+        // ^ COST FUNCTION; DEFINITELY CHANGE THIS
         if (cost<mincost){
             mincost=cost;
             V.clear();
