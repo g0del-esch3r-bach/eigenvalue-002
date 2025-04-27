@@ -16,4 +16,7 @@
        -@@@@@@@@@%.      :@@@@@@@@@%.    @@@@@@@@@@@@@@@#       
          ..:--:..          ..:--:..      ................       
                                                                 
-                                                                
+
+newcostfunc.cpp has an extraneous value alpha. for now, this is deprecated.
+
+cf2.cpp is the current canon file to be used.
