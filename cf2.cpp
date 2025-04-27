@@ -72,7 +72,7 @@ int main(){
             }
         }
         ///////////////////////////////////////////////////////////////////
-        cost=2.7*edges(B,N)/(N-1)-eigen2(B,N); // <----- NEW COST METRIC!/
+        cost=23*edges(B,N)/(N-1)-eigen2(B,N)*eigen2(B,N); // <----- NEW COST METRIC!/
         /////////////////////////////////////////////////////////////////
         if (cost<mincost){
             mincost=cost;
