@@ -55,13 +55,13 @@ string outputstr(int N){
 }
 int main(){
     int N,M,k,i,j;
-    float cost,alpha,mincost;
+    float cost,mincost;
     N=3; //<----------------------- FREE VARIABLE
     mincost=100000;
     freopen(inputstr(N).c_str(),"r",stdin);
     freopen(outputstr(N).c_str(),"w",stdout);
     cin>>N>>M;
-    cout<<"N = "<<N<<endl<<"alpha = "<<alpha<<endl;
+    cout<<"N = "<<N<<endl;
     vector<int>V;
     int A[M][N][N],B[N][100];
     for (k=0;k<=M-1;k=k+1){
