@@ -56,7 +56,7 @@ string outputstr(int N){
 int main(){
     int N,M,k,i,j;
     float cost,mincost;
-    N=3; //<----------------------- FREE VARIABLE
+    N=5; //<----------------------- FREE VARIABLE
     mincost=100000;
     freopen(inputstr(N).c_str(),"r",stdin);
     freopen(outputstr(N).c_str(),"w",stdout);
