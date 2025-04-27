@@ -36,7 +36,7 @@ float eigen2(int A[][100],int N){
     sort(V.begin(),V.end());
     return V[1];
 }
-float numedge(int A[][100],int N){
+float edges(int A[][100],int N){
     int i,j;
     float edges;
     edges=0;
@@ -50,30 +50,16 @@ float numedge(int A[][100],int N){
 string inputstr(int N){
     return "gooddata/o"+to_string(N)+".txt";
 }
-string outputstr(int N,float a){
-    int M;
-    M=1000*a;
-    if (M<10){
-        return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"a0.00"+to_string(M)+".txt";
-    }
-    else if (M<100){
-        return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"a0.0"+to_string(M)+".txt";
-    }
-    else if (M<1000){
-        return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"a0."+to_string(M)+".txt";
-    }
-    else{
-        return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"a1.000.txt";
-    }
+string outputstr(int N){
+    return "bestgraph/bg"+to_string(N)+"/g"+to_string(N)+"b.txt";
 }
 int main(){
     int N,M,k,i,j;
     float cost,alpha,mincost;
-    N=3; //<----------------------- FREE VARIABLES;
-    alpha=0.701; //<---------------- SUBJECT TO CHANGE
+    N=3; //<----------------------- FREE VARIABLE
     mincost=100000;
     freopen(inputstr(N).c_str(),"r",stdin);
-    freopen(outputstr(N,alpha).c_str(),"w",stdout);
+    freopen(outputstr(N).c_str(),"w",stdout);
     cin>>N>>M;
     cout<<"N = "<<N<<endl<<"alpha = "<<alpha<<endl;
     vector<int>V;
@@ -85,8 +71,7 @@ int main(){
                 B[i][j]=A[k][i][j];
             }
         }
-        cost=3*alpha*eigen2(B,N)/((float)(N+1))+2*(1-alpha)*numedge(B,N)/((float)(N*(N-1)));
-        // ^ COST FUNCTION; DEFINITELY CHANGE THIS
+        cost=2*edges(B,N)/(N-1)-eigen2(B,N); // <----- NEW COST METRIC!
         if (cost<mincost){
             mincost=cost;
             V.clear();
