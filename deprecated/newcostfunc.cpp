@@ -5,8 +5,8 @@
 #include<cmath>
 #include<string>
 #include<algorithm>
-#include "eigen-3.4.0/Eigen/Dense"
-#include "eigen-3.4.0/Eigen/Eigenvalues"
+#include "../eigen-3.4.0/Eigen/Dense"
+#include "../eigen-3.4.0/Eigen/Eigenvalues"
 using Eigen::MatrixXd;
 using Eigen::VectorXcd;
 using namespace std;
