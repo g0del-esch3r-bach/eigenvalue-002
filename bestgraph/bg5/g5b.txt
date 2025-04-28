@@ -1,5 +1,5 @@
 N = 5
-min. cost = 22
+min. cost = -0.0625
 
 1 graph(s) minimizing cost
 ==========================
